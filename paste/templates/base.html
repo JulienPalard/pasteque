@@ -1,0 +1,47 @@
+{% load i18n %} 
+{% load compress %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}{% endblock %} - {{ DISPLAY_NAME }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% compress css %}
+  <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ STATIC_URL }}css/font-awesome.min.css" rel="stylesheet">
+  <link href="{{ STATIC_URL }}css/pygments-highlight.css" rel="stylesheet">
+  <link href="{{ STATIC_URL }}css/main.css" rel="stylesheet">
+  {% endcompress %}
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="brand" href="{% url 'index' %}">{{ DISPLAY_NAME }}</a>
+      <div class="nav-collapse collapse">
+        <p class="navbar-text pull-right">
+        {% trans 'powered by' %} <a href="https://github.com/setsuna-/pasteque"><b>{{ APP_NAME }}</b></a>
+        </p>
+        <ul class="nav">
+          <li class="{% if menu == 'index'%}active{% endif %}"><a href="{% url 'index' %}">{% trans 'Paste something' %}</a></li>
+          <li class="{% if menu == 'history'%}active{% endif %}"><a href="{% url 'history' %}">{% trans 'Lasts pastes' %}</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+<div class="container">
+{% block content %}{% endblock %}
+</div>
+{% compress js %}
+ <script src="{{ STATIC_URL }}js/jquery-1.9.1.min.js"></script>
+ <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+ <script src="{{ STATIC_URL }}js/jquery.autogrowtextarea.min.js"></script>
+{% endcompress %}
+{% block javascript %}{% endblock %}
+</body>
+</html>

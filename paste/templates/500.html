@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}404 - {% trans 'Not found' %}{% endblock %}
+{% block content %}
+<h1>500 - {% trans 'Server error' %}</h1>
+<div id="notfound">
+<p>{% blocktrans %}An error occurred{% endblocktrans %}.</p>
+</div>
+{% endblock %}

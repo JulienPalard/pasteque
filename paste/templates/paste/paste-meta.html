@@ -1,0 +1,36 @@
+{% load i18n %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<table class="table table-striped table-bordered">
+<tr>
+   <th>#</th>
+   <th>{% trans 'Language' %}</th>
+   <th>{% trans 'Size' %}</th>
+   <th>{% trans 'Paste time' %}</th>
+   <th>{% trans 'User IP' %}</th>
+   <th>{% trans 'Visibility' %}</th>
+   <th>{% trans 'Protection' %}</th>
+   <th>{% trans 'Views' %}</th>
+   <th>{% trans 'Expire time' %}</th>
+</tr>
+<tr>
+    <td>{{ paste.id }}</td>
+    <td>{% trans paste.language.name %}</td>
+    <td>{{ paste.size }}</td>
+    <td>{{ paste.paste_time }}</td>
+    <td>{{ paste.paste_ip }}</td>
+    <td>{% if paste.private %}<i class="icon-eye-close"> {% trans 'private' %}</i>{% else %}<i class="icon-eye-open"> {% trans 'public' %}</i>{% endif %}</td>
+    <td>{% if paste.password %}<i class="icon-lock"> {% trans 'locked' %}</i>{% else %}<i class="icon-unlock"> {% trans 'open' %}</i>{% endif %}</td>
+    <td>{{ paste.viewcount }}{% if paste.lifecount > 0 %}/{{ paste.lifecount }}{% endif %}</td>
+    <td>{% if paste.expiration_time %}{{ paste.expiration_time }}{% else %}{% trans 'None' %}{% endif %}</td>
+</tr>
+</table>
+
+<ul class="nav nav-pills pull-right">
+{% for renderer in renderers %}
+    <li class="{% if renderer == current_renderer %}active{% endif %}">
+        <a href="{% url 'paste' slug=slug renderer=renderer %}">{{ renderer|capfirst }}</a>
+    </li>
+{% endfor %}
+</ul>
+
+<h1>{{ paste.title|truncatechars:50 }}</h1>

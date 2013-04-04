@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+{% include "paste/paste-meta.html" %}
+<form><textarea id="id_content">{{ paste.content }}</textarea></form>
+{% endblock %}
+{% block javascript %}
+<script>
+$(document).ready(function() {
+    $("#id_content").autoGrow();
+});
+</script>
+{% endblock %}

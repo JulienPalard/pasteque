@@ -1,0 +1,186 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-04 15:13+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:12
+msgid "Never expire"
+msgstr "Jamais"
+
+#: models.py:13
+msgid "5 minutes"
+msgstr "5 minutes"
+
+#: models.py:14
+msgid "30 minutes"
+msgstr "30 minutes"
+
+#: models.py:15
+msgid "1 hour"
+msgstr "1 heure"
+
+#: models.py:16
+msgid "1 day"
+msgstr "1 jour"
+
+#: models.py:17
+msgid "1 week"
+msgstr "1 semaine"
+
+#: templates/404.html:3 templates/404.html.py:5 templates/500.html:3
+msgid "Not found"
+msgstr "Non trouvé"
+
+#: templates/404.html:7
+msgid "Sorry but the page you try to access does not exists"
+msgstr "Désolé mais la page à laquelle vous tentez d'accéder n'existe pas"
+
+#: templates/500.html:5
+msgid "Server error"
+msgstr "Erreur système"
+
+#: templates/500.html:7
+msgid "An error occurred"
+msgstr "Une erreur est survenue"
+
+#: templates/base.html:27
+msgid "powered by"
+msgstr "propulsé par"
+
+#: templates/base.html:30 templates/paste/index.html:4
+msgid "Paste something"
+msgstr "Nouveau collage"
+
+#: templates/base.html:31 templates/paste/history.html:3
+msgid "Lasts pastes"
+msgstr "Derniers collages"
+
+#: templates/paste/expired.html:7
+msgid "This paste has expired"
+msgstr "Ce collage a expiré"
+
+#: templates/paste/expired.html:8
+msgid "Sorry but the paste you try to access has expired"
+msgstr "Désolé mais ce collage n'est plus accessible car il a expiré"
+
+#: templates/paste/history.html:9 templates/paste/index.html:11
+msgid "Title"
+msgstr "Titre"
+
+#: templates/paste/history.html:10 templates/paste/index.html:19
+#: templates/paste/paste-meta.html:6
+msgid "Language"
+msgstr "Langage"
+
+#: templates/paste/history.html:11 templates/paste/paste-meta.html:7
+msgid "Size"
+msgstr "Taille"
+
+#: templates/paste/history.html:12 templates/paste/paste-meta.html:8
+msgid "Paste time"
+msgstr "Heure collage"
+
+#: templates/paste/history.html:13 templates/paste/paste-meta.html:9
+msgid "User IP"
+msgstr "IP utilisateur"
+
+#: templates/paste/history.html:14 templates/paste/paste-meta.html:11
+msgid "Protection"
+msgstr "Protection"
+
+#: templates/paste/history.html:15 templates/paste/paste-meta.html:12
+msgid "Views"
+msgstr "Vues"
+
+#: templates/paste/history.html:25 templates/paste/paste-meta.html:22
+msgid "locked"
+msgstr "verrouillé"
+
+#: templates/paste/history.html:25 templates/paste/paste-meta.html:22
+msgid "open"
+msgstr "ouvert"
+
+#: templates/paste/history.html:30
+msgid "Nothing has been pasted yet"
+msgstr "Rien n'a encore été collé"
+
+#: templates/paste/index.html:27
+msgid "Private"
+msgstr "Privé"
+
+#: templates/paste/index.html:35
+msgid "Content"
+msgstr "Contenu"
+
+#: templates/paste/index.html:42 templates/paste/paste-meta.html:13
+msgid "Expire time"
+msgstr "Expiration temporelle"
+
+#: templates/paste/index.html:50
+msgid "Expire allowed views"
+msgstr "Expiration nombre d'affichages"
+
+#: templates/paste/index.html:58
+msgid "Password protected"
+msgstr "Protection par mot de passe"
+
+#: templates/paste/index.html:67
+msgid "Paste"
+msgstr "Coller"
+
+#: templates/paste/index.html:75
+msgid "characters left"
+msgstr "caractères restants"
+
+#: templates/paste/locked.html:7
+msgid "This paste is password protected"
+msgstr "Protégé par un mot de passe"
+
+#: templates/paste/locked.html:8
+msgid "Please enter the password in the field below to unlock the paste and display it"
+msgstr "Veuillez entrer le mot de passe dans le champ ci-dessous pour déverrouiller le collage et l'afficher"
+
+#: templates/paste/locked.html:12
+msgid "Password"
+msgstr "Mot de passe"
+
+#: templates/paste/locked.html:21
+msgid "Unlock"
+msgstr "Déverrouiller"
+
+#: templates/paste/paste-meta.html:10
+msgid "Visibility"
+msgstr "Visibilité"
+
+#: templates/paste/paste-meta.html:21
+msgid "private"
+msgstr "Privé"
+
+#: templates/paste/paste-meta.html:21
+msgid "public"
+msgstr "publique"
+
+#: templates/paste/paste-meta.html:24
+msgid "None"
+msgstr "Aucune"
+
+msgid "Paste expired"
+msgstr "Heure collage"
+
+msgid "Plain text"
+msgstr "Texte simple"
+
+msgid "Expiration time"
+msgstr "Heure d'expiration"

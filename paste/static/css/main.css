@@ -1,0 +1,101 @@
+body { 
+padding-top: 60px;
+}
+
+pre {
+font-family: "Bitstream Vera Sans Mono", "monospace";
+background-color: #fff;
+color: #000;
+font-size: 14px;
+}
+
+h1 {
+font-size: 22px;
+}
+
+table {
+margin-top: 15px;
+}
+
+ul.errorlist {
+padding: 0;
+margin: 0;
+}
+
+td.title {
+width: 390px;
+}
+
+form ul {
+color: #B94A48;
+list-style-type: none;
+}
+
+textarea#id_content {
+width: 1155px;
+height: 320px;
+}
+
+input:hover, input:active, input[type="text"]:focus, input[type="password"]:focus,
+textarea:hover, textarea:active, textarea:focus {
+border-color: #ccc;
+box-shadow: none;
+-webkit-box-shadow: none;
+}
+
+input#id_title {
+width: 505px;
+}
+
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+width: 1170px;
+}
+
+.input-prepend .add-on {
+background-color: #fff;
+}
+
+.row {
+margin-top: 10px;
+}
+.btn {
+margin-top: 15px;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+padding: 5px;
+}
+
+[class*="span"] {
+float: left;
+min-height: 1px;
+margin-left: 25px;
+}
+
+.span3 {
+width: 270px;
+}
+
+.span6 {
+width: 570px;
+}
+
+.span12 {
+width: 1165px;
+}
+
+.navbar a {
+color: #777;
+}
+
+#unlock, #expired {
+margin-top: 30px;
+}
+
+#unlock form {
+margin-top: 20px;
+}
+
+#charsleft {
+float: right;
+}

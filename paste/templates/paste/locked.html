@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div id="unlock">
+<p><b>{% blocktrans %}This paste is password protected{% endblocktrans %}</b>.</p>
+<p>{% blocktrans %}Please enter the password in the field below to unlock the paste and display it{% endblocktrans %}.</p>
+<form method="post" action="">    
+    <div class="row">
+       <div class="span3">
+           <label for="id_password">{% trans 'Password' %}</label>
+           <div class="input-prepend">
+                <span class="add-on"><i class="icon-lock"></i></span>
+                <input id="id_password" maxlength="128" name="password" type="text">
+            </div>
+            
+       </div>
+    </div>
+	{% csrf_token %}
+	<button type="submit" class="btn">{% trans 'Unlock' %}</button>
+</form>
+</div>
+{% endblock %}

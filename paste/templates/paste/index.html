@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load compress %}
+{% block title %}{% trans 'Paste something' %}{% endblock %}
+{% block content %}
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+	<form method="post" action="{% url 'index' %}">
+    {{ form.non_field_errors }}
+    <div class="row">
+	    <div class="span6">
+	        <label for="id_title">{% trans 'Title' %}</label>
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-tag"></i></span>
+                {{ form.title }}
+            </div>
+	        {{ form.title.errors }}
+	    </div>
+	    <div class="span3">
+	        <label for="id_language">{% trans 'Language' %}</label>
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-file-alt"></i></span>
+                {{ form.language }}
+            </div>
+	        {{ form.language.errors }}
+	    </div>
+       <div class="span3">
+            <label for="id_private">{% trans 'Private' %}</label>
+            {{ form.private }}
+            {{ form.private.errors }}
+       </div>
+	</div>
+	<div class="row">
+	   <div class="span12">
+	        <span id="charsleft">...</span>
+            <label for="id_content">{% trans 'Content' %}</label>
+            {{ form.content }}
+            {{ form.content.errors }}
+	   </div>
+	</div>
+    <div class="row">
+       <div class="span3">
+            <label for="id_lifetime">{% trans 'Expire time' %}</label>
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-time"></i></span>
+                {{ form.lifetime }}
+            </div>
+            {{ form.lifetime.errors }}
+       </div>
+       <div class="span3">
+            <label for="id_lifecount">{% trans 'Expire allowed views' %}</label>
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-refresh"></i></span>
+                {{ form.lifecount }}
+            </div>
+            {{ form.lifecount.errors }}
+       </div>
+       <div class="span6">
+           <label for="id_password">{% trans 'Password protected' %}</label>
+           <div class="input-prepend">
+                <span class="add-on"><i class="icon-lock"></i></span>
+                {{ form.password }}
+            </div>
+            {{ form.password.errors }}
+       </div>
+    </div>
+	{% csrf_token %}
+	<button class="btn" type="submit">{% trans 'Paste' %}</button>
+</form>
+{% endblock %}
+{% block javascript %}
+{% compress js inline %}
+<script>
+function refresh_characters_left() {
+  var characters_left = {{ max_characters }} - $('#id_content').val().length;
+  $('span#charsleft').html('<b>' + characters_left + '</b> {% trans 'characters left' %}');
+}
+$(document).ready(function() {
+  refresh_characters_left();
+});
+$('#id_content').keyup(function() {
+  refresh_characters_left();
+})
+</script>
+{% endcompress %}
+{% endblock %}

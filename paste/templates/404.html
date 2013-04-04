@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}404 - {% trans 'Not found' %}{% endblock %}
+{% block content %}
+<h1>404 - {% trans 'Not found' %}</h1>
+<div id="notfound">
+<p>{% blocktrans %}Sorry but the page you try to access does not exists{% endblocktrans %}.</p>
+</div>
+{% endblock %}

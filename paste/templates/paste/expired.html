@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div id="expired">
+<p><b>{% blocktrans %}This paste has expired{% endblocktrans %}</b>.</p>
+<p>{% blocktrans %}Sorry but the paste you try to access has expired{% endblocktrans %}.</p>
+</div>
+{% endblock %}
