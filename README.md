@@ -137,12 +137,12 @@ daemonize=/opt/app/webtools/var/uwsgid-pasteque.log
 uwsgi --ini /opt/app/webtools/uwsgi.ini
 [uWSGI] getting INI configuration from /opt/app/webtools/uwsgi.ini
 ps -ef |grep uwsgi
-paste     2269     1  0 11:32 ?        00:00:00 uwsgi --ini /opt/app/webtools/uwsgi.ini
-paste     2271  2269  0 11:32 ?        00:00:00 uwsgi --ini /opt/app/webtools/uwsgi.ini
-paste     2272  2269  0 11:32 ?        00:00:00 uwsgi --ini /opt/app/webtools/uwsgi.ini
-paste     2273  2269  0 11:32 ?        00:00:00 uwsgi --ini /opt/app/webtools/uwsgi.ini
-paste     2274  2269  0 11:32 ?        00:00:00 uwsgi --ini /opt/app/webtools/uwsgi.ini
-paste     2275  2269  0 11:32 ?        00:00:00 uwsgi --ini /opt/app/webtools/uwsgi.ini
+web     2269     1  0 11:32 ?        00:00:00 uwsgi --ini /opt/app/webtools/uwsgi.ini
+web     2271  2269  0 11:32 ?        00:00:00 uwsgi --ini /opt/app/webtools/uwsgi.ini
+web     2272  2269  0 11:32 ?        00:00:00 uwsgi --ini /opt/app/webtools/uwsgi.ini
+web     2273  2269  0 11:32 ?        00:00:00 uwsgi --ini /opt/app/webtools/uwsgi.ini
+web     2274  2269  0 11:32 ?        00:00:00 uwsgi --ini /opt/app/webtools/uwsgi.ini
+web     2275  2269  0 11:32 ?        00:00:00 uwsgi --ini /opt/app/webtools/uwsgi.ini
 cat /opt/app/webtools/var/uwsgid-pasteque.log to check if everything is ok.
 </pre>
 
@@ -150,7 +150,7 @@ cat /opt/app/webtools/var/uwsgid-pasteque.log to check if everything is ok.
 
 <pre>
 sudo vim /etc/nginx/nginx.conf
-user alex;
+user web;
 sudo vim /etc/nginx/sites-available/webtools-pasteque
 upstream uwsgi {
   server unix:///opt/app/webtools/var/uwsgid-pasteque.sock;
