@@ -68,7 +68,6 @@
 </form>
 {% endblock %}
 {% block javascript %}
-{% compress js inline %}
 <script>
 function refresh_characters_left() {
   var characters_left = {{ max_characters }} - $('#id_content').val().length;
@@ -81,5 +80,4 @@ $('#id_content').keyup(function() {
   refresh_characters_left();
 })
 </script>
-{% endcompress %}
 {% endblock %}
