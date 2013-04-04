@@ -9,8 +9,6 @@ SITE_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 ### Customize/configure Pasteque
 
 DISPLAY_NAME = 'Pasteque'
-APP_NAME = 'Pasteque'
-APP_VERSION = 'v0.1'
 ENABLED_RENDERERS = ('pygments', 'form', 'raw') # Ensure show-***.html exists
 DEFAULT_RENDERER = 'pygments'
 MAX_CHARACTERS = 100000
