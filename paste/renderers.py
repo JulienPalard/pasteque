@@ -12,7 +12,7 @@ def render_pygments(request, paste, data):
     if cache_exists(key):
         highlighted_content = cache_fetch(key)
     else:
-        lexer = get_lexer_by_name(paste.language.key)
+        lexer = get_lexer_by_name(paste.language.slug)
         formatter = get_formatter_by_name('html')
         highlighted_content = highlight(paste.content, lexer, formatter)
         cache_store(key, highlighted_content)

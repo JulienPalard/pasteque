@@ -21,7 +21,7 @@ EXPIRE_CHOICES = (
 class Language(models.Model):
     """Language object."""
     name = models.CharField(max_length=200, unique=True)
-    key = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
 
     def __unicode__(self):
         """String representation."""
