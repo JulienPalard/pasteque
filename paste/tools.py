@@ -2,24 +2,15 @@ import string
 import shortuuid
 import os
 from webtools import settings
+from .models import Paste
 
-
-def next_slug(slug):
-    """Returns the shortest next slug alphabetically."""
-    slug = list(slug[::-1])
-    for i in range(len(slug)):
-        pos = string.ascii_letters.find(slug[i]) + 1
-        slug[i] = string.ascii_letters[pos % 52]
-        if slug[i] != 'a':
-            break
-    if slug[i] == 'a':
-        slug.append('a')
-    return "".join(slug)[::-1]
-
-
-def random_id():
-    """Returns an id."""
-    return shortuuid.uuid()
+def random_id(model):
+    """Returns a short uuid for the slug of the given model."""
+    uuid = shortuuid.uuid()
+    for i in range(3, len(uuid)):
+        if not model.objects.filter(slug=uuid[:i]):
+            return uuid[:i]
+    return uuid
 
 
 def cache_get_filepath(key):

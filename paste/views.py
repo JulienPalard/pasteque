@@ -13,7 +13,7 @@ def index(request):
     data = {'menu': 'index',
             'max_characters': settings.MAX_CHARACTERS}
     if request.method == 'POST':
-        paste = Paste(slug=random_id(),
+        paste = Paste(slug=random_id(Paste),
                       paste_ip=request.META['REMOTE_ADDR'],
                       paste_agent=request.META['HTTP_USER_AGENT'])
         form = PasteForm(request.POST, instance=paste)
