@@ -17,7 +17,7 @@
     {% for paste in pastes %}
     <tr>
         <td>{{ paste.id }}</td>
-        <td class="title"><a href="{% url 'paste' slug=paste.slug renderer=default_renderer %}">{{ paste.title|truncatechars:40 }}</a></td>
+        <td class="title"><a href="{% url 'paste' slug=paste.slug %}">{{ paste.title|truncatechars:40 }}</a></td>
         <td>{% trans paste.language.name %}</td>
         <td>{{ paste.size }}</td>
         <td>{{ paste.paste_time }}</td>
