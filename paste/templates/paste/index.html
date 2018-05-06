@@ -31,7 +31,7 @@
 	</div>
 	<div class="row">
 	   <div class="span12">
-	        <span id="charsleft">...</span>
+	        <span id="charsleft"><b id="charsleft_counter">...</b>&nbsp;{% trans 'characters left' %}</span>
             <label for="id_content">{% trans 'Content' %}</label>
             {{ form.content }}
             {{ form.content.errors }}
@@ -65,19 +65,9 @@
     </div>
 	{% csrf_token %}
 	<button class="btn" type="submit">{% trans 'Paste' %}</button>
+    <input type="hidden" id="max_characters" value="{{ max_characters }}">
 </form>
 {% endblock %}
 {% block javascript %}
-<script>
-function refresh_characters_left() {
-  var characters_left = {{ max_characters }} - $('#id_content').val().length;
-  $('span#charsleft').html('<b>' + characters_left + '</b> {% trans 'characters left' %}');
-}
-$(document).ready(function() {
-  refresh_characters_left();
-});
-$('#id_content').keyup(function() {
-  refresh_characters_left();
-})
-</script>
+<script type="text/javascript" src="/static/js/paste.js"></script>
 {% endblock %}
