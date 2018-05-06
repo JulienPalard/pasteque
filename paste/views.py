@@ -26,7 +26,7 @@ def index(request):
     return render(request, 'paste/index.html', data)
 
 
-def show(request, slug, renderer):
+def show(request, slug, renderer='pygments'):
     """Display paste."""
     # Fetching object
     paste = get_object_or_404(Paste, slug=slug)
