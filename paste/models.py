@@ -33,7 +33,7 @@ class Language(models.Model):
 
 class Paste(models.Model):
     """Paste object."""
-    language = models.ForeignKey(Language, default=13, on_delete=models.SET_NULL, null=True)
+    language = models.ForeignKey(Language, default=14, on_delete=models.SET_NULL, null=True)
     slug = models.SlugField(unique=True, editable=False)
     title = models.CharField(max_length=200, blank=True)
     content = models.TextField(validators=[MaxLengthValidator(settings.MAX_CHARACTERS)])
