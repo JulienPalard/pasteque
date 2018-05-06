@@ -38,10 +38,6 @@ DATABASES = {
 
 APP_NAME = 'Pasteque'
 APP_VERSION = 'v0.1'
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "paste.context_processors.app_details",
-    "django.core.context_processors.static",
-)
 SITE_ID = 1
 MANAGERS = ADMINS
 USE_I18N = True
@@ -62,6 +58,23 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 )
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.messages.context_processors.messages',
+                "paste.context_processors.app_details",
+            ],
+        },
+    },
+]
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -72,6 +85,7 @@ ROOT_URLCONF = 'webtools.urls'
 WSGI_APPLICATION = 'webtools.wsgi.application'
 INSTALLED_APPS = (
     'django.contrib.staticfiles',
+    'django.contrib.contenttypes',
     'compressor',
     'paste',
 )

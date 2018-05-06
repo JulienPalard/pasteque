@@ -35,7 +35,7 @@ def cache_exists(key):
 def cache_store(key, value):
     """Store cache value for key."""
     with open(cache_get_filepath(key), 'w') as cache_file:
-        cache_file.write(value.encode('utf-8'))
+        cache_file.write(value)
 
 
 def cache_fetch(key):

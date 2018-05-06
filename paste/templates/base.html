@@ -1,4 +1,4 @@
-{% load i18n %} 
+{% load i18n %}
 {% load compress %}
 <!DOCTYPE html>
 <html lang="en">
@@ -6,10 +6,10 @@
   <title>{% block title %}{% endblock %} - {{ DISPLAY_NAME }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% compress css %}
-  <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
-  <link href="{{ STATIC_URL }}css/font-awesome.min.css" rel="stylesheet">
-  <link href="{{ STATIC_URL }}css/pygments-highlight.css" rel="stylesheet">
-  <link href="{{ STATIC_URL }}css/main.css" rel="stylesheet">
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/static/css/pygments-highlight.css" rel="stylesheet">
+  <link href="/static/css/main.css" rel="stylesheet">
   {% endcompress %}
 </head>
 <body>
@@ -38,9 +38,9 @@
 {% block content %}{% endblock %}
 </div>
 {% compress js %}
- <script src="{{ STATIC_URL }}js/jquery-1.9.1.min.js"></script>
- <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
- <script src="{{ STATIC_URL }}js/jquery.autogrowtextarea.min.js"></script>
+ <script src="/static/js/jquery-1.9.1.min.js"></script>
+ <script src="/static/js/bootstrap.min.js"></script>
+ <script src="/static/js/jquery.autogrowtextarea.min.js"></script>
 {% endcompress %}
 {% block javascript %}{% endblock %}
 </body>

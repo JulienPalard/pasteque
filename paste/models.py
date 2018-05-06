@@ -27,16 +27,19 @@ class Language(models.Model):
         """String representation."""
         return _(self.name)
 
+    def __str__(self):
+        return str(_(self.name))
+
 
 class Paste(models.Model):
     """Paste object."""
-    language = models.ForeignKey(Language, default=13)
+    language = models.ForeignKey(Language, default=13, on_delete=models.SET_NULL, null=True)
     slug = models.SlugField(unique=True, editable=False)
     title = models.CharField(max_length=200, blank=True)
     content = models.TextField(validators=[MaxLengthValidator(settings.MAX_CHARACTERS)])
     size = models.IntegerField(default=0, editable=False)
     paste_time = models.DateTimeField(default=datetime.now, editable=False)
-    paste_ip = models.IPAddressField(editable=False)
+    paste_ip = models.GenericIPAddressField(editable=False)
     paste_agent = models.CharField(max_length=200, editable=False)
     lifetime = models.IntegerField(default=0, choices=EXPIRE_CHOICES)
     lifecount = models.IntegerField(default=0)

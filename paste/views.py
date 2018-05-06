@@ -1,10 +1,10 @@
-import renderers
+from . import renderers
 from django.http import HttpResponse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.shortcuts import redirect, render, get_object_or_404
-from models import Paste
-from forms import PasteForm
-from tools import random_id
+from .models import Paste
+from .forms import PasteForm
+from .tools import random_id
 from webtools import settings
 
 
@@ -13,8 +13,8 @@ def index(request):
     data = {'menu': 'index',
             'max_characters': settings.MAX_CHARACTERS}
     if request.method == 'POST':
-        paste = Paste(slug=random_id(), 
-                      paste_ip=request.META['REMOTE_ADDR'], 
+        paste = Paste(slug=random_id(),
+                      paste_ip=request.META['REMOTE_ADDR'],
                       paste_agent=request.META['HTTP_USER_AGENT'])
         form = PasteForm(request.POST, instance=paste)
         if not form.is_valid():
@@ -34,7 +34,7 @@ def show(request, slug, renderer):
     # Handling expiration
     if paste.is_expired():
         return render(request, 'paste/expired.html')
-    # Handling passwords        
+    # Handling passwords
     if paste.password:
         if 'password' in request.POST:
             password = request.POST['password']

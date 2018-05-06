@@ -18,19 +18,16 @@ def render_pygments(request, paste, data):
         cache_store(key, highlighted_content)
     data['paste'] = paste
     data['highlighted'] = highlighted_content
-    context = RequestContext(request, data)
-    return get_template('paste/show-pygments.html').render(context)
+    return get_template('paste/show-pygments.html').render(data)
 
 
 def render_form(request, paste, data):
     """Renders Form template."""
     data['paste'] = paste
-    context = RequestContext(request, data)
-    return get_template('paste/show-form.html').render(context)
+    return get_template('paste/show-form.html').render(data)
 
 
 def render_raw(request, paste, data):
     """Renders RAW content."""
     data['paste'] = paste
-    context = RequestContext(request, data)
-    return get_template('paste/show-raw.html').render(context)
+    return get_template('paste/show-raw.html').render(data)
