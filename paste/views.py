@@ -21,7 +21,7 @@ def index(request):
             data['form'] = form
             return render(request, 'paste/index.html', data)
         form.save() # Some logic added to overrided method, see forms.py
-        return redirect(reverse('paste', kwargs={'slug': paste.slug, 'renderer': settings.DEFAULT_RENDERER}))
+        return redirect(reverse('paste', kwargs={'slug': paste.slug}))
     data['form'] = PasteForm()
     return render(request, 'paste/index.html', data)
 
