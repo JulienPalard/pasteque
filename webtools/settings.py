@@ -96,6 +96,7 @@ PASTE = {
     'enabled_renderers': ['pygments', 'raw'],
     'default_renderer': 'pygments',
     'max_characters': 100000,
+    'default_lifetime': 60 * 24 * 7 * 365,
 }
 
 LOGGING = {

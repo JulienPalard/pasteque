@@ -22,7 +22,8 @@ def index(request):
         form.save() # Some logic added to overrided method, see forms.py
         return redirect(reverse('paste', kwargs={'slug': paste.slug}))
     data['form'] = PasteForm(initial={
-        'private': settings.PASTE['private_by_default']})
+        'private': settings.PASTE['private_by_default'],
+        'lifetime': settings.PASTE['default_lifetime']})
     return render(request, 'paste/index.html', data)
 
 

@@ -10,11 +10,11 @@ import uuid
 
 EXPIRE_CHOICES = (
     (0, _('Never expire')),
-    (5, _('5 minutes')),
-    (30, _('30 minutes')),
     (60, _('1 hour')),
-    (1440, _('1 day')),
-    (10080, _('1 week')),
+    (60 * 24, _('1 day')),
+    (60 * 24 * 7, _('1 week')),
+    (60 * 24 * 7 * 30, _('1 month')),
+    (60 * 24 * 7 * 365, _('1 year')),
 )
 
 
@@ -42,7 +42,8 @@ class Paste(models.Model):
     paste_time = models.DateTimeField(default=datetime.now, editable=False)
     paste_ip = models.GenericIPAddressField(editable=False)
     paste_agent = models.CharField(max_length=200, editable=False)
-    lifetime = models.IntegerField(default=0, choices=EXPIRE_CHOICES)
+    lifetime = models.IntegerField(default=settings.PASTE['default_lifetime'],
+                                   choices=EXPIRE_CHOICES)
     lifecount = models.IntegerField(default=0, blank=True)
     viewcount = models.IntegerField(default=0, editable=False)
     expired = models.BooleanField(default=False, editable=False)

@@ -1,5 +1,7 @@
+from webtools import settings
+from django import forms
 from django.forms import ModelForm
-from .models import Paste, Language
+from .models import Paste, Language, EXPIRE_CHOICES
 
 
 class PasteForm(ModelForm):
@@ -8,7 +10,6 @@ class PasteForm(ModelForm):
         model = Paste
         fields = ['language', 'title', 'password', 'content', 'lifetime',
                   'lifecount', 'private']
-
 
     def save(self, commit=True):
         """Overwrites save method."""
