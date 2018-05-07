@@ -1,5 +1,4 @@
 from . import renderers
-from django.http import HttpResponse
 from django.urls import reverse
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import Paste
@@ -53,10 +52,9 @@ def show(request, slug, renderer='pygments'):
     data['current_renderer'] = renderer
     data['renderers'] = settings.PASTE['enabled_renderers']
     render_method = getattr(renderers, 'render_%s' % renderer)
-    rendered_template = render_method(request, paste, data)
+    response = render_method(request, paste, data)
 
     # Responding
-    response = HttpResponse(rendered_template)
     if 'password' in request.POST:
         response.set_cookie('password', request.POST['password'])
     return response

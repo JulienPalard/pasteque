@@ -1,4 +1,5 @@
 from django.template import RequestContext
+from django.http import HttpResponse
 from django.template import loader
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
@@ -18,16 +19,17 @@ def render_pygments(request, paste, data):
         cache_store(key, highlighted_content)
     data['paste'] = paste
     data['highlighted'] = highlighted_content
-    return loader.render_to_string('paste/show-pygments.html', data, request)
+    rendered = loader.render_to_string('paste/show-pygments.html', data, request)
+    return HttpResponse(rendered)
 
 
 def render_form(request, paste, data):
     """Renders Form template."""
     data['paste'] = paste
-    return loader.render_to_string('paste/show-form.html', data, request)
+    rendered = loader.render_to_string('paste/show-form.html', data, request)
+    return HttpResponse(rendered)
 
 
 def render_raw(request, paste, data):
     """Renders RAW content."""
-    data['paste'] = paste
-    return loader.render_to_string('paste/show-raw.html', data, request)
+    return HttpResponse(paste.content, content_type='text/plain')
