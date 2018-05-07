@@ -103,7 +103,7 @@ class Paste(models.Model):
         """Return hashed string."""
         if not self.salt:
             self.salt = str(uuid.uuid1())
-        return hashlib.sha512(raw+self.salt).hexdigest()
+        return hashlib.sha512((raw+self.salt).encode()).hexdigest()
 
     def set_password(self, raw):
         """Define a hashed password."""
