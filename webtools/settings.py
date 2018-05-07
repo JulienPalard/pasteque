@@ -9,9 +9,6 @@ SITE_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 ### Customize/configure Pasteque
 
 DISPLAY_NAME = 'Pasteque'
-ENABLED_RENDERERS = ('pygments', 'form', 'raw') # Ensure show-***.html exists
-DEFAULT_RENDERER = 'pygments'
-MAX_CHARACTERS = 100000
 COMPRESS_ENABLED = False
 SECRET_KEY = 'change_me'
 ALLOWED_HOSTS = ['localhost','127.0.0.1']
@@ -89,6 +86,18 @@ INSTALLED_APPS = (
     'compressor',
     'paste',
 )
+
+PASTE = {
+    'has_title': False,
+    'has_expire_by_views': False,
+    'has_meta_table': False,
+    'show_char_left': False,
+    'private_by_default': True,
+    'enabled_renderers': ['pygments', 'raw'],
+    'default_renderer': 'pygments',
+    'max_characters': 100000,
+}
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

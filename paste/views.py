@@ -11,7 +11,7 @@ from webtools import settings
 def index(request):
     """Displays form."""
     data = {'menu': 'index',
-            'max_characters': settings.MAX_CHARACTERS}
+            'max_characters': settings.PASTE['max_characters']}
     if request.method == 'POST':
         paste = Paste(slug=random_id(Paste),
                       paste_ip=request.META['REMOTE_ADDR'],
@@ -22,7 +22,8 @@ def index(request):
             return render(request, 'paste/index.html', data)
         form.save() # Some logic added to overrided method, see forms.py
         return redirect(reverse('paste', kwargs={'slug': paste.slug}))
-    data['form'] = PasteForm()
+    data['form'] = PasteForm(initial={
+        'private': settings.PASTE['private_by_default']})
     return render(request, 'paste/index.html', data)
 
 
@@ -47,10 +48,10 @@ def show(request, slug, renderer='pygments'):
     # Before rendering actions
     paste.incr_viewcount()
     # Handling rendering modes
-    if not renderer or renderer not in settings.ENABLED_RENDERERS:
-        renderer = settings.DEFAULT_RENDERER
+    if not renderer or renderer not in settings.PASTE['enabled_renderers']:
+        renderer = settings.PASTE['default_renderer']
     data['current_renderer'] = renderer
-    data['renderers'] = settings.ENABLED_RENDERERS
+    data['renderers'] = settings.PASTE['enabled_renderers']
     render_method = getattr(renderers, 'render_%s' % renderer)
     rendered_template = render_method(request, paste, data)
 
@@ -64,5 +65,5 @@ def show(request, slug, renderer='pygments'):
 def history(request):
     """Display last 25 public non-expired pastes."""
     pastes = Paste.objects.filter(private=False, expired=False).order_by('-pk')[:25]
-    data = {'pastes': pastes, 'menu': 'history', 'default_renderer': settings.DEFAULT_RENDERER}
+    data = {'pastes': pastes, 'menu': 'history', 'default_renderer': settings.PASTE['default_renderer']}
     return render(request, 'paste/history.html', data)

@@ -1,6 +1,7 @@
 {% load i18n %}
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-<!--<table class="table table-striped table-bordered">
+{% if PASTE.has_meta_table %}
+<table class="table table-striped table-bordered">
 <tr>
    <th>#</th>
    <th>{% trans 'Language' %}</th>
@@ -24,13 +25,20 @@
     <td>{% if paste.expiration_time %}{{ paste.expiration_time }}{% else %}{% trans 'None' %}{% endif %}</td>
 </tr>
 </table>
--->
-<ul class="nav nav-pills pull-right">
-{% for renderer in renderers %}
-    <li class="{% if renderer == current_renderer %}active{% endif %}">
-        <a href="{% url 'paste' slug=slug renderer=renderer %}">{{ renderer|capfirst }}</a>
-    </li>
-{% endfor %}
-</ul>
-
-<h1>{{ paste.title|truncatechars:50 }}</h1>
+{% endif %}
+<div class="row">
+  <div class="span9">
+    {% if PASTE.has_title %}
+    <h1>{{ paste.title|truncatechars:50 }}</h1>
+    {% endif %}
+  </div>
+  <div class="span3">
+    <ul class="nav nav-pills pull-right">
+    {% for renderer in renderers %}
+        <li class="{% if renderer == current_renderer %}active{% endif %}">
+            <a href="{% url 'paste' slug=slug renderer=renderer %}">{{ renderer|capfirst }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
