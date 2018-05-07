@@ -3,44 +3,44 @@
 {% load compress %}
 {% block title %}{% trans 'Paste something' %}{% endblock %}
 {% block content %}
-	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-	<form method="post" action="{% url 'index' %}">
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <form method="post" action="{% url 'index' %}">
     {{ form.non_field_errors }}
     <div class="row">
       {% if PASTE.has_title %}
-	    <div class="span6">
-	        <label for="id_title">{% trans 'Title' %}</label>
+        <div class="span6">
+            <label for="id_title">{% trans 'Title' %}</label>
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-tag"></i></span>
                 {{ form.title }}
             </div>
-	        {{ form.title.errors }}
-	    </div>
+            {{ form.title.errors }}
+        </div>
       {% endif %}
-	    <div class="span3">
-	        <label for="id_language">{% trans 'Language' %}</label>
+        <div class="span3">
+            <label for="id_language">{% trans 'Language' %}</label>
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-file-alt"></i></span>
                 {{ form.language }}
             </div>
-	        {{ form.language.errors }}
-	    </div>
+            {{ form.language.errors }}
+        </div>
        <div class="span3">
             <label for="id_private">{% trans 'Private' %}</label>
             {{ form.private }}
             {{ form.private.errors }}
        </div>
-	</div>
-	<div class="row">
-	   <div class="span12">
+    </div>
+    <div class="row">
+       <div class="span12">
 {% if PASTE.show_char_left %}
-	        <span id="charsleft"><b id="charsleft_counter">...</b>&nbsp;{% trans 'characters left' %}</span>
+            <span id="charsleft"><b id="charsleft_counter">...</b>&nbsp;{% trans 'characters left' %}</span>
 {% endif %}
             <label for="id_content">{% trans 'Content' %}</label>
             {{ form.content }}
             {{ form.content.errors }}
-	   </div>
-	</div>
+       </div>
+    </div>
     <div class="row">
        <div class="span3">
             <label for="id_lifetime">{% trans 'Expire time' %}</label>
@@ -69,8 +69,8 @@
             {{ form.password.errors }}
        </div>
     </div>
-	{% csrf_token %}
-	<button class="btn" type="submit">{% trans 'Paste' %}</button>
+    {% csrf_token %}
+    <button class="btn" type="submit">{% trans 'Paste' %}</button>
     <input type="hidden" id="max_characters" value="{{ max_characters }}">
 </form>
 {% endblock %}

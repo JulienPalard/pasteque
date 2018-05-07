@@ -2,18 +2,18 @@
 {% load i18n %}
 {% block title %}{% trans 'Lasts pastes' %}{% endblock %}
 {% block content %}
-	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-	<table class="table table-striped table-bordered">
-	<tr>
-	   <th>#</th>
-	   <th>{% trans 'Title' %}</th>
-	   <th>{% trans 'Language' %}</th>
-	   <th>{% trans 'Size' %}</th>
-	   <th>{% trans 'Paste time' %}</th>
-	   <th>{% trans 'User IP' %}</th>
-	   <th>{% trans 'Protection' %}</th>
-	   <th>{% trans 'Views' %}</th>
-	</tr>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <table class="table table-striped table-bordered">
+    <tr>
+       <th>#</th>
+       <th>{% trans 'Title' %}</th>
+       <th>{% trans 'Language' %}</th>
+       <th>{% trans 'Size' %}</th>
+       <th>{% trans 'Paste time' %}</th>
+       <th>{% trans 'User IP' %}</th>
+       <th>{% trans 'Protection' %}</th>
+       <th>{% trans 'Views' %}</th>
+    </tr>
     {% for paste in pastes %}
     <tr>
         <td>{{ paste.id }}</td>
@@ -30,6 +30,6 @@
         <td colspan="8">{% trans 'Nothing has been pasted yet' %}.</td>
     </tr>
     {% endfor %}
-	</table>
+    </table>
 
 {% endblock %}
