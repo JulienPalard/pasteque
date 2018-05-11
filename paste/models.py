@@ -118,3 +118,8 @@ class Paste(models.Model):
     def __unicode__(self):
         """String representation."""
         return self.slug
+
+    def __str__(self):
+        excerpt = repr(self.content[:100]) + (
+            '...' if len(self.content) > 100 else '')
+        return "{} - {} - {}".format(self.slug, self.title, excerpt)

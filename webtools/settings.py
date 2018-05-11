@@ -22,7 +22,7 @@ ADMINS = (
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join(SITE_ROOT, 'var', 'db', 'webtools.sqlite3'),       
+        'NAME': os.path.join(SITE_ROOT, 'var', 'db', 'webtools.sqlite3'),
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -63,26 +63,33 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                'django.contrib.messages.context_processors.messages',
-                "paste.context_processors.app_details",
+                'paste.context_processors.app_details',
             ],
         },
     },
 ]
 
-MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
+MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-)
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+]
+
 ROOT_URLCONF = 'webtools.urls'
 WSGI_APPLICATION = 'webtools.wsgi.application'
 INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.contenttypes',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.messages',
+    'django.contrib.sessions',
     'compressor',
     'paste',
 )
