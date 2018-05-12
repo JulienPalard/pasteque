@@ -32,7 +32,4 @@
     <h1>{{ paste.title|truncatechars:50 }}</h1>
     {% endif %}
   </div>
-  <div class="span3">
-    <a href="{% url 'paste' slug=slug renderer='raw' %}">View raw</a>
-  </div>
 </div>
