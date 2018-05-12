@@ -33,7 +33,7 @@ def index(request):
             return render(request, 'paste/index.html', data)
         form.save() # Some logic added to overrided method, see forms.py
         location = request.build_absolute_uri(
-            reverse('paste', kwargs={'slug': paste.slug}))
+            reverse('short_paste', kwargs={'slug': paste.slug}))
         return HttpResponseRedirect(location, content=location + "\n",
                                     content_type='text/plain')
     data['form'] = PasteForm(initial={

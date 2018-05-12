@@ -1,15 +1,18 @@
 import string
+import random
 import shortuuid
 import os
 from webtools import settings
 from .models import Paste
 
+
 def random_id(model):
     """Returns a short uuid for the slug of the given model."""
-    uuid = shortuuid.uuid()
+    uuid = random.choice('0123456789') + shortuuid.uuid()
     for i in range(3, len(uuid)):
-        if not model.objects.filter(slug=uuid[:i]):
-            return uuid[:i]
+        potential_uuid = uuid[:i]
+        if not model.objects.filter(slug=potential_uuid):
+            return potential_uuid
     return uuid
 
 
