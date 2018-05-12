@@ -22,6 +22,7 @@ def index(request):
             for any_file in request.FILES.values():
                 break
             form = PasteForm({'language': 14,
+                              'title': any_file.name,
                               'private': settings.PASTE['private_by_default'],
                               'lifetime': settings.PASTE['default_lifetime'],
                               'content': any_file.read().decode()
