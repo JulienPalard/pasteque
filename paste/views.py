@@ -1,12 +1,15 @@
 from . import renderers
 from django.urls import reverse
-from django.shortcuts import redirect, render, get_object_or_404
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.views.decorators.csrf import csrf_exempt
 from .models import Paste
 from .forms import PasteForm
 from .tools import random_id
 from webtools import settings
 
 
+@csrf_exempt
 def index(request):
     """Displays form."""
     data = {'menu': 'index',
@@ -15,15 +18,28 @@ def index(request):
         paste = Paste(slug=random_id(Paste),
                       paste_ip=request.META['REMOTE_ADDR'],
                       paste_agent=request.META['HTTP_USER_AGENT'])
-        form = PasteForm(request.POST, instance=paste)
+        if request.FILES:
+            for any_file in request.FILES.values():
+                break
+            form = PasteForm({'language': 14,
+                              'private': settings.PASTE['private_by_default'],
+                              'lifetime': settings.PASTE['default_lifetime'],
+                              'content': any_file.read().decode()
+                              }, instance=paste)
+        else:
+            form = PasteForm(request.POST, instance=paste)
         if not form.is_valid():
             data['form'] = form
             return render(request, 'paste/index.html', data)
         form.save() # Some logic added to overrided method, see forms.py
-        return redirect(reverse('paste', kwargs={'slug': paste.slug}))
+        location = request.build_absolute_uri(
+            reverse('paste', kwargs={'slug': paste.slug}))
+        return HttpResponseRedirect(location, content=location + "\n",
+                                    content_type='text/plain')
     data['form'] = PasteForm(initial={
         'private': settings.PASTE['private_by_default'],
-        'lifetime': settings.PASTE['default_lifetime']})
+        'lifetime': settings.PASTE['default_lifetime'],
+        'language': 14})
     return render(request, 'paste/index.html', data)
 
 
