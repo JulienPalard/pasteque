@@ -33,12 +33,6 @@
     {% endif %}
   </div>
   <div class="span3">
-    <ul class="nav nav-pills pull-right">
-    {% for renderer in renderers %}
-        <li class="{% if renderer == current_renderer %}active{% endif %}">
-            <a href="{% url 'paste' slug=slug renderer=renderer %}">{{ renderer|capfirst }}</a>
-        </li>
-    {% endfor %}
-    </ul>
+    <a href="{% url 'paste' slug=slug renderer='raw' %}">View raw</a>
   </div>
 </div>

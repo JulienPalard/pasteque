@@ -7,8 +7,18 @@
     <form method="post" action="{% url 'index' %}">
     {{ form.non_field_errors }}
     <div class="row">
+       <div class="span12">
+{% if PASTE.show_char_left %}
+            <span id="charsleft"><b id="charsleft_counter">...</b>&nbsp;{% trans 'characters left' %}</span>
+{% endif %}
+            <label for="id_content">{% trans 'Content' %}</label>
+            {{ form.content }}
+            {{ form.content.errors }}
+       </div>
+    </div>
+    <div class="row">
       {% if PASTE.has_title %}
-        <div class="span6">
+        <div class="span3">
             <label for="id_title">{% trans 'Title' %}</label>
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-tag"></i></span>
@@ -30,18 +40,6 @@
             {{ form.private }}
             {{ form.private.errors }}
        </div>
-    </div>
-    <div class="row">
-       <div class="span12">
-{% if PASTE.show_char_left %}
-            <span id="charsleft"><b id="charsleft_counter">...</b>&nbsp;{% trans 'characters left' %}</span>
-{% endif %}
-            <label for="id_content">{% trans 'Content' %}</label>
-            {{ form.content }}
-            {{ form.content.errors }}
-       </div>
-    </div>
-    <div class="row">
        <div class="span3">
             <label for="id_lifetime">{% trans 'Expire time' %}</label>
             <div class="input-prepend">
@@ -60,7 +58,7 @@
             {{ form.lifecount.errors }}
        </div>
      {% endif %}
-       <div class="span6">
+       <div class="span3">
            <label for="id_password">{% trans 'Password protected' %}</label>
            <div class="input-prepend">
                 <span class="add-on"><i class="icon-lock"></i></span>

@@ -13,7 +13,7 @@
   {% endcompress %}
 </head>
 <body>
-<div class="navbar navbar-fixed-top">
+<nav class="navbar navbar-default">
   <div class="navbar-inner">
     <div class="container-fluid">
       <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -27,13 +27,15 @@
         {% trans 'powered by' %} <a href="https://github.com/setsuna-/pasteque"><b>{{ APP_NAME }}</b></a>
         </p>
         <ul class="nav">
+          {% block nav %}
           <li class="{% if menu == 'index'%}active{% endif %}"><a href="{% url 'index' %}">{% trans 'Paste something' %}</a></li>
           <li class="{% if menu == 'history'%}active{% endif %}"><a href="{% url 'history' %}">{% trans 'Lasts pastes' %}</a></li>
+          {% endblock %}
         </ul>
       </div><!--/.nav-collapse -->
     </div>
   </div>
-</div>
+</nav>
 <div class="container">
 {% block content %}{% endblock %}
 </div>
