@@ -41,6 +41,7 @@ def index(request):
         'private': settings.PASTE['private_by_default'],
         'lifetime': settings.PASTE['default_lifetime'],
         'language': 14})
+    data['absolute_index_url'] = request.build_absolute_uri(reverse('index'))
     return render(request, 'paste/index.html', data)
 
 
