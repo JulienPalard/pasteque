@@ -29,7 +29,6 @@
         <ul class="nav">
           {% block nav %}
           <li class="{% if menu == 'index'%}active{% endif %}"><a href="{% url 'index' %}">{% trans 'Paste something' %}</a></li>
-          <li class="{% if menu == 'history'%}active{% endif %}"><a href="{% url 'history' %}">{% trans 'Lasts pastes' %}</a></li>
           {% endblock %}
         </ul>
       </div><!--/.nav-collapse -->
