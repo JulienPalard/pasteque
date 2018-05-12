@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
-from pygments.formatters import get_formatter_by_name
+from pygments.formatters import HtmlFormatter
 from paste.tools import cache_exists, cache_fetch, cache_store
 
 
@@ -14,7 +14,7 @@ def render_pygments(request, paste, data):
         highlighted_content = cache_fetch(key)
     else:
         lexer = get_lexer_by_name(paste.language.slug)
-        formatter = get_formatter_by_name('html')
+        formatter = HtmlFormatter(style='emacs')
         highlighted_content = highlight(paste.content, lexer, formatter)
         cache_store(key, highlighted_content)
     data['paste'] = paste
