@@ -23,6 +23,14 @@ class Language(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
 
+    @classmethod
+    def by_name(cls, name):
+        language = cls.objects.filter(name__icontains=name).first()
+        if not language:
+            language = cls.objects.filter(
+                name__iexact=settings.PASTE['default_language']).first()
+        return language
+
     def __unicode__(self):
         """String representation."""
         return _(self.name)

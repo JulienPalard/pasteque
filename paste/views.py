@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
-from .models import Paste
+from .models import Paste, Language
 from .forms import PasteForm
 from .tools import random_id
 from webtools import settings
@@ -19,9 +19,10 @@ def index(request):
                       paste_ip=request.META['REMOTE_ADDR'],
                       paste_agent=request.META['HTTP_USER_AGENT'])
         if request.FILES:
-            for any_file in request.FILES.values():
+            for language_name, any_file in request.FILES.items():
                 break
-            form = PasteForm({'language': 14,
+            language = Language.by_name(language_name)
+            form = PasteForm({'language': language.id,
                               'title': any_file.name,
                               'private': settings.PASTE['private_by_default'],
                               'lifetime': settings.PASTE['default_lifetime'],

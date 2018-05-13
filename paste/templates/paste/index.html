@@ -71,7 +71,7 @@
     <button class="btn" type="submit">{% trans 'Paste' %}</button>
     <input type="hidden" id="max_characters" value="{{ max_characters }}">
     </form>
-<div class="alert alert-info" role="alert">You can also use: <pre>curl {{ absolute_index_url }} -Ffile=@hello.py</pre></div>
+<div class="alert alert-info" role="alert">You can also use: <pre>curl {{ absolute_index_url }} -Fpython=@hello.py</pre></div>
 {% endblock %}
 {% block javascript %}
 {% if PASTE.show_char_left %}
