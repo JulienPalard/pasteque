@@ -12,7 +12,6 @@
        <th>{% trans 'Language' %}</th>
        <th>{% trans 'Size' %}</th>
        <th>{% trans 'Paste time' %}</th>
-       <th>{% trans 'User IP' %}</th>
        <th>{% trans 'Protection' %}</th>
        <th>{% trans 'Views' %}</th>
     </tr>
@@ -25,7 +24,6 @@
         <td>{% trans paste.language.name %}</td>
         <td>{{ paste.size }}</td>
         <td>{{ paste.paste_time }}</td>
-        <td>{{ paste.paste_ip }}</td>
         <td>{% if paste.password %}<i class="icon-lock"> {% trans 'locked' %}</i>{% else %}<i class="icon-unlock"> {% trans 'open' %}</i>{% endif %}</td>
         <td>{{ paste.viewcount }}</td>
     </tr>

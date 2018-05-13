@@ -14,10 +14,9 @@ def index(request):
     """Displays form."""
     data = {'menu': 'index',
             'max_characters': settings.PASTE['max_characters']}
+    # if request.method == 'PUT':
     if request.method == 'POST':
-        paste = Paste(slug=random_id(Paste),
-                      paste_ip=request.META['REMOTE_ADDR'],
-                      paste_agent=request.META['HTTP_USER_AGENT'])
+        paste = Paste(slug=random_id(Paste))
         if request.FILES:
             for language_name, any_file in request.FILES.items():
                 break

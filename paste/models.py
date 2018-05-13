@@ -48,8 +48,6 @@ class Paste(models.Model):
         settings.PASTE['max_characters'])])
     size = models.IntegerField(default=0, editable=False)
     paste_time = models.DateTimeField(default=datetime.now, editable=False)
-    paste_ip = models.GenericIPAddressField(editable=False)
-    paste_agent = models.CharField(max_length=200, editable=False)
     lifetime = models.IntegerField(default=settings.PASTE['default_lifetime'],
                                    choices=EXPIRE_CHOICES)
     lifecount = models.IntegerField(default=0, blank=True)
