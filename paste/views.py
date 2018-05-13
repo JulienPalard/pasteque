@@ -41,7 +41,7 @@ def index(request):
     data['form'] = PasteForm(initial={
         'private': settings.PASTE['private_by_default'],
         'lifetime': settings.PASTE['default_lifetime'],
-        'language': 14})
+        'language': Language.by_name(settings.PASTE['default_language']).id})
     data['absolute_index_url'] = request.build_absolute_uri(reverse('index'))
     return render(request, 'paste/index.html', data)
 
