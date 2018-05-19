@@ -1,7 +1,7 @@
 from . import renderers
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Paste, Language
 from .forms import PasteForm
@@ -14,7 +14,6 @@ def index(request):
     """Displays form."""
     data = {'menu': 'index',
             'max_characters': settings.PASTE['max_characters']}
-    # if request.method == 'PUT':
     if request.method == 'POST':
         paste = Paste(slug=random_id(Paste))
         if request.FILES:
