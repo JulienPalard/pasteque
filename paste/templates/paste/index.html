@@ -15,48 +15,74 @@
       {{ form.content.errors }}
     </div>
 
-    {% if PASTE.has_title %}
-    <div class="form-group">
-      <label for="id_title"><span class="add-on"><i class="icon-tag"></i></span> {% trans 'Title' %}</label>
-      {{ form.title|add_class:"form-control" }}
-      {{ form.title.errors }}
-    </div>
-    {% endif %}
+    <div class="form-row">
+      {% if PASTE.has_title %}
+      <div class="col-auto">
+        <label class="sr-only" for="id_title"><span class="add-on"><i class="icon-tag"></i></span> {% trans 'Title' %}</label>
+        {{ form.title|add_class:"form-control" }}
+        {{ form.title.errors }}
+      </div>
+      {% endif %}
 
-    <div class="form-group">
-      <label for="id_language"><span class="add-on"><i class="icon-file-alt"></i></span> {% trans 'Language' %}</label>
-      {{ form.language|add_class:"form-control" }}
-      {{ form.language.errors }}
-    </div>
+      <div class="col-auto">
+        <label class="sr-only" for="id_language">{% trans 'Language' %}</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><span class="add-on"><i class="icon-file-alt"></i></span></div>
+          </div>
+          {{ form.language|add_class:"form-control" }}
+        </div>
+        {{ form.language.errors }}
+      </div>
 
-    <div class="form-group">
-      <label for="id_lifetime"><span class="add-on"><i class="icon-time"></i></span> {% trans 'Expire time' %}</label>
-      {{ form.lifetime|add_class:"form-control" }}
-      {{ form.lifetime.errors }}
-    </div>
+      <div class="col-auto">
+        <label class="sr-only" for="id_lifetime">{% trans 'Expire time' %}</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><span class="add-on"><i class="icon-time"></i></span></div>
+          </div>
+          {{ form.lifetime|add_class:"form-control" }}
+        </div>
+        {{ form.lifetime.errors }}
+      </div>
 
-    {% if PASTE.has_expire_by_views %}
-    <div class="form-group">
-      <label for="id_lifecount"><span class="add-on"><i class="icon-refresh"></i></span> {% trans 'Expire allowed views' %}</label>
-      {{ form.lifecount|add_class:"form-control" }}
-      {{ form.lifecount.errors }}
-    </div>
-    {% endif %}
+      {% if PASTE.has_expire_by_views %}
+      <div class="col-auto">
+        <label class="sr-only" for="id_lifecount">{% trans 'Expire allowed views' %}</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><span class="add-on"><i class="icon-refresh"></i></span></div>
+          </div>
+          {{ form.lifecount|add_class:"form-control" }}
+        </div>
+        {{ form.lifecount.errors }}
+      </div>
+      {% endif %}
 
-    <div class="form-group">
-      <label for="id_password"><span class="add-on"><i class="icon-lock"></i></span> {% trans 'Password protected' %}</label>
-      {{ form.password|add_class:"form-control" }}
-      {{ form.password.errors }}
-    </div>
+      <div class="col-auto">
+        <label class="sr-only" for="id_password">{% trans 'Password protected' %}</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><span class="add-on"><i class="icon-lock"></i></span></div>
+          </div>
+          {{ form.password|add_class:"form-control"|placeholder:'Password protected'}}
+        </div>
+        {{ form.password.errors }}
+      </div>
 
-    <div class="form-check">
-      {{ form.private|add_class:"form-check-input" }}
-      <label class="form-check-label" for="id_private">{% trans 'Private' %}</label>
-      {{ form.private.errors }}
+      <div class="form-check">
+        {{ form.private|add_class:"form-check-input" }}
+        <label class="form-check-label" for="id_private">{% trans 'Private' %}</label>
+        {{ form.private.errors }}
+      </div>
+
+      <div class="col-auto">
+        <button class="btn btn-primary btn-lg" type="submit">{% trans 'Paste' %}</button>
+      </div>
+
     </div>
 
     {% csrf_token %}
-    <button class="btn btn-primary" type="submit">{% trans 'Paste' %}</button>
     <input type="hidden" id="max_characters" value="{{ max_characters }}">
   </form>
   <div class="d-flex p-2 bd-highlight">
