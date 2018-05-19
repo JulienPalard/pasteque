@@ -2,7 +2,7 @@
 
 {% block title %} {{ title }}{% endblock %}
 {% block nav %}
-<li><a href="{% url 'paste' slug=slug renderer='raw' %}">View raw</a></li>
+<li><a class="nav-link" href="{% url 'paste' slug=slug renderer='raw' %}">View raw</a></li>
 {% endblock %}
 {% block content %}
 {{ highlighted|safe }}
