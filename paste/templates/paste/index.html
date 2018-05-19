@@ -65,7 +65,10 @@
       (attribute name is used for syntax highlighting, and shortcuts like "py" are allowed, see Language dropdown for language list.)
       <br /><br />
       You may even use a bash function:
-      <pre>wyz() { curl {{ absolute_index_url }} -Fpython=@$1 }</pre>
+      <pre>wyz()
+{
+    curl {{ absolute_index_url }} -Fpython=@$1
+}</pre>
     </div>
   </div>
 {% endblock %}
