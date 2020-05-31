@@ -1,3 +1,6 @@
+from webtools import settings
+
+
 from django.contrib.sessions.middleware import (
     SessionMiddleware as DjangoSessionMiddleware,
 )

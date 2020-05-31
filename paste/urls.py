@@ -9,9 +9,9 @@ urlpatterns = [
     url(r"^history$", views.history, name="history"),
     url(r"^static/(?P<path>.*)", serve, {"document_root": settings.STATIC_ROOT}),
     url(
-        r"^paste/(?P<slug>[a-zA-Z0-9]+)/(?P<renderer>[a-z]+)?$",
+        r"^paste/(?P<slug>[a-zA-Z0-9-]+)/(?P<renderer>[a-z]+)?$",
         views.show,
         name="paste",
     ),
-    url(r"^(?P<slug>[0-9][a-zA-Z0-9]+)$", views.show, name="short_paste"),
+    url(r"^(?P<slug>[0-9][a-zA-Z0-9-]+)$", views.show, name="short_paste"),
 ]
