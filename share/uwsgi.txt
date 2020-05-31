@@ -1,1 +1,0 @@
-uwsgi --chdir=/home/alex/coding/django/webtools --module=webtools.wsgi:application --env DJANGO_SETTINGS_MODULE=webtools.settings --master --pidfile=/tmp/uwsgid-pasteque.pid --socket=/tmp/uwsgid-pasteque.sock --processes=5 --uid=1000 --gid=1000 --harakiri=20 --limit-as=128 --max-requests=5000 --vacuum --daemonize=/tmp/uwsgid-pasteque.log
