@@ -7,31 +7,40 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('paste', '0001_initial'),
+        ("paste", "0001_initial"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='paste',
-            name='paste_agent',
-        ),
-        migrations.RemoveField(
-            model_name='paste',
-            name='paste_ip',
+        migrations.RemoveField(model_name="paste", name="paste_agent",),
+        migrations.RemoveField(model_name="paste", name="paste_ip",),
+        migrations.AlterField(
+            model_name="paste",
+            name="language",
+            field=models.ForeignKey(
+                default=14,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="paste.Language",
+            ),
         ),
         migrations.AlterField(
-            model_name='paste',
-            name='language',
-            field=models.ForeignKey(default=14, null=True, on_delete=django.db.models.deletion.SET_NULL, to='paste.Language'),
-        ),
-        migrations.AlterField(
-            model_name='paste',
-            name='lifecount',
+            model_name="paste",
+            name="lifecount",
             field=models.IntegerField(blank=True, default=0),
         ),
         migrations.AlterField(
-            model_name='paste',
-            name='lifetime',
-            field=models.IntegerField(choices=[(0, 'Never expire'), (60, '1 hour'), (1440, '1 day'), (10080, '1 week'), (302400, '1 month'), (3679200, '1 year')], default=3679200),
+            model_name="paste",
+            name="lifetime",
+            field=models.IntegerField(
+                choices=[
+                    (0, "Never expire"),
+                    (60, "1 hour"),
+                    (1440, "1 day"),
+                    (10080, "1 week"),
+                    (302400, "1 month"),
+                    (3679200, "1 year"),
+                ],
+                default=3679200,
+            ),
         ),
     ]

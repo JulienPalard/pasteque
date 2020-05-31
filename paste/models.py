@@ -9,17 +9,18 @@ import uuid
 
 
 EXPIRE_CHOICES = (
-    (0, _('Never expire')),
-    (60, _('1 hour')),
-    (60 * 24, _('1 day')),
-    (60 * 24 * 7, _('1 week')),
-    (60 * 24 * 7 * 30, _('1 month')),
-    (60 * 24 * 7 * 365, _('1 year')),
+    (0, _("Never expire")),
+    (60, _("1 hour")),
+    (60 * 24, _("1 day")),
+    (60 * 24 * 7, _("1 week")),
+    (60 * 24 * 7 * 30, _("1 month")),
+    (60 * 24 * 7 * 365, _("1 year")),
 )
 
 
 class Language(models.Model):
     """Language object."""
+
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
 
@@ -28,7 +29,8 @@ class Language(models.Model):
         language = cls.objects.filter(name__icontains=name).first()
         if not language:
             language = cls.objects.filter(
-                name__iexact=settings.PASTE['default_language']).first()
+                name__iexact=settings.PASTE["default_language"]
+            ).first()
         return language
 
     def __unicode__(self):
@@ -41,15 +43,20 @@ class Language(models.Model):
 
 class Paste(models.Model):
     """Paste object."""
-    language = models.ForeignKey(Language, default=14, on_delete=models.SET_NULL, null=True)
+
+    language = models.ForeignKey(
+        Language, default=14, on_delete=models.SET_NULL, null=True
+    )
     slug = models.SlugField(unique=True, editable=False)
     title = models.CharField(max_length=200, blank=True)
-    content = models.TextField(validators=[MaxLengthValidator(
-        settings.PASTE['max_characters'])])
+    content = models.TextField(
+        validators=[MaxLengthValidator(settings.PASTE["max_characters"])]
+    )
     size = models.IntegerField(default=0, editable=False)
     paste_time = models.DateTimeField(default=datetime.now, editable=False)
-    lifetime = models.IntegerField(default=settings.PASTE['default_lifetime'],
-                                   choices=EXPIRE_CHOICES)
+    lifetime = models.IntegerField(
+        default=settings.PASTE["default_lifetime"], choices=EXPIRE_CHOICES
+    )
     lifecount = models.IntegerField(default=0, blank=True)
     viewcount = models.IntegerField(default=0, editable=False)
     expired = models.BooleanField(default=False, editable=False)
@@ -109,7 +116,7 @@ class Paste(models.Model):
         """Return hashed string."""
         if not self.salt:
             self.salt = str(uuid.uuid1())
-        return hashlib.sha512((raw+self.salt).encode()).hexdigest()
+        return hashlib.sha512((raw + self.salt).encode()).hexdigest()
 
     def set_password(self, raw):
         """Define a hashed password."""
@@ -126,6 +133,5 @@ class Paste(models.Model):
         return self.slug
 
     def __str__(self):
-        excerpt = repr(self.content[:100]) + (
-            '...' if len(self.content) > 100 else '')
+        excerpt = repr(self.content[:100]) + ("..." if len(self.content) > 100 else "")
         return "{} - {} - {}".format(self.slug, self.title, excerpt)

@@ -8,7 +8,7 @@ from .models import Paste
 
 def random_id(model):
     """Returns a short uuid for the slug of the given model."""
-    uuid = random.choice('0123456789') + shortuuid.uuid()
+    uuid = random.choice("0123456789") + shortuuid.uuid()
     for i in range(3, len(uuid)):
         potential_uuid = uuid[:i]
         if not model.objects.filter(slug=potential_uuid):
@@ -28,11 +28,11 @@ def cache_exists(key):
 
 def cache_store(key, value):
     """Store cache value for key."""
-    with open(cache_get_filepath(key), 'w') as cache_file:
+    with open(cache_get_filepath(key), "w") as cache_file:
         cache_file.write(value)
 
 
 def cache_fetch(key):
     """Fetch cache value for key."""
-    with open(cache_get_filepath(key), 'r') as cache_file:
+    with open(cache_get_filepath(key), "r") as cache_file:
         return cache_file.read()
