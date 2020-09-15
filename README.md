@@ -51,10 +51,3 @@ If you're in production collect static files:
 Run it:
 
     ./manage.py runserver
-
-
-## Words generation
-
-To generate the french dict I used
-
-    $ unmunch <(grep po:adj /usr/share/hunspell/fr_FR.dic) /usr/share/hunspell/fr_FR.aff | LC_ALL=C grep '^[a-z]*$' | grep '^[a-z]\{2,7\}$' | uniq > dict/french

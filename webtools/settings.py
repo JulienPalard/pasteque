@@ -14,7 +14,6 @@ SECRET_KEY = "change_me"
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 TIME_ZONE = "Europe/Brussels"
 LANGUAGE_CODE = "fr-FR"
-DICT = os.path.join(SITE_ROOT, "dict", "french")
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 ADMINS = (("user", "user@hostname.domain"),)
@@ -116,7 +115,10 @@ LOGGING = {
             "filters": ["require_debug_false"],
             "class": "django.utils.log.AdminEmailHandler",
         },
-        "console": {"level": "DEBUG", "class": "logging.StreamHandler",},
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+        },
         "logfile": {
             "level": "DEBUG",
             "class": "logging.handlers.RotatingFileHandler",
