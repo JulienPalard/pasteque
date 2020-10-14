@@ -93,7 +93,7 @@
       You may even use a bash function:
       <pre>wyz()
 {
-    curl {{ absolute_index_url }} -Fpython=@$1
+    curl https://wyz.fr/ -F"${1##*.}=@$1"
 }</pre>
     </div>
   </div>
