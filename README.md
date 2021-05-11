@@ -36,6 +36,10 @@ In `settings.py` edit:
     SECRET_KEY = 'fill_a_secret_key_here'
     ALLOWED_HOSTS = ['localhost','127.0.0.1','paste.henriet.eu']
 
+Create some needed directories:
+
+    mkdir -p var/{logs,db}
+
 Then create the database:
 
     ./manage.py migrate
