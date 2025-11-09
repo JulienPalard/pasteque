@@ -8,7 +8,6 @@ dependencies = [
     "pygments",
     "shortuuid",
     "tabulate",
-    "django_compressor",
 ]
 
 [tool.setuptools]

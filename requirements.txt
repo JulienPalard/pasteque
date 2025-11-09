@@ -9,22 +9,11 @@ asgiref==3.10.0
 bleach==6.3.0
     # via pasteque (pyproject.toml)
 django==5.2.8
-    # via
-    #   django-appconf
-    #   django-compressor
-    #   pasteque (pyproject.toml)
-django-appconf==1.2.0
-    # via django-compressor
-django-compressor==4.5.1
     # via pasteque (pyproject.toml)
 markdown==3.10
     # via pasteque (pyproject.toml)
 pygments==2.19.2
     # via pasteque (pyproject.toml)
-rcssmin==1.1.2
-    # via django-compressor
-rjsmin==1.2.2
-    # via django-compressor
 shortuuid==1.0.13
     # via pasteque (pyproject.toml)
 sqlparse==0.5.3
