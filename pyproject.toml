@@ -1,0 +1,58 @@
+[project]
+name = "pasteque"
+version = "0.1"
+dependencies = [
+    "bleach",
+    "markdown",
+    "django",
+    "pygments",
+    "shortuuid",
+    "tabulate",
+    "django_compressor",
+]
+
+[tool.setuptools]
+packages = [
+    "paste",
+    "webtools",
+]
+
+[tool.pylint]
+load-plugins = "pylint_django"
+django-settings-module = "webtools.settings"
+ignore-paths = ["^paste/migrations/.*$"]
+disable = [
+    "wrong-import-position",
+]
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.black]
+
+[tool.tox]
+envlist = ["py311", "py312", "py313", "py314", "mypy", "black", "pylint", "isort"]
+skip_missing_interpreters = true
+
+[tool.tox.env_run_base]
+description = "Run test under {base_python}"
+commands = [["python", "-m", "compileall", "webtools"]]
+
+[tool.tox.env.mypy]
+deps = ["mypy"]
+commands = [["mypy", "--strict", "webtools"]]
+
+[tool.tox.env.black]
+deps = ["black"]
+commands = [["black", "--check", "--diff", "webtools"]]
+
+[tool.tox.env.pylint]
+deps = ["pylint", "pylint-django"]
+commands = [["pylint", "webtools"]]
+
+[tool.tox.env.isort]
+deps = ["isort"]
+commands = [["isort", "--check", "webtools"]]

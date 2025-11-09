@@ -1,17 +1,22 @@
-from django.conf.urls import url
+from django.urls import path
 from django.views.static import serve
+
 from paste import views
 from webtools import settings
 
-
 urlpatterns = [
-    url(r"^$", views.index, name="index"),
-    url(r"^history$", views.history, name="history"),
-    url(r"^static/(?P<path>.*)", serve, {"document_root": settings.STATIC_ROOT}),
-    url(
-        r"^paste/(?P<slug>[a-zA-Z0-9-]+)/(?P<renderer>[a-z]+)?$",
+    path("", views.index, name="index"),
+    path("history", views.history, name="history"),
+    path("static/<slug:path>", serve, {"document_root": settings.STATIC_ROOT}),
+    path(
+        "paste/<slug:slug>/<slug:renderer>",
         views.show,
         name="paste",
     ),
-    url(r"^(?P<slug>[0-9][a-zA-Z0-9-]+)$", views.show, name="short_paste"),
+    path(
+        "paste/<slug:slug>/",
+        views.show,
+        name="paste",
+    ),
+    path("<slug:slug>", views.show, name="short_paste"),
 ]
